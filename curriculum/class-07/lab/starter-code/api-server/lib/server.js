@@ -8,40 +8,30 @@ const PORT = process.env.PORT || 8080;
 
 let db = [];
 
+// When does this middleware run?
+// What does it do?
 app.use(express.json());
 
-app.use( (req,res,next) => {
+// When does this middleware run?
+app.use((req, res, next) => {
   console.log('LOG:', req.method, req.path);
   next();
 });
 
-app.get('/categories', (req,res,next) => {
+// Route to Get All Categories
+app.get('/categories', (req, res, next) => {
   let count = db.length;
   let results = db;
-  res.json({count,results});
+  res.json({ count, results });
 });
 
-app.get('/categories/:id', (req,res,next) => {
-  let id = req.params.id;
-  let record = db.filter((record) => record.id === parseInt(id));
-  res.json(record[0]);
-});
+// Route to Get One Category
 
+// Route to Create a Category
 
-app.post('/categories', (req,res,next) => {
-  let {name} = req.body;
-  let record = {name};
-  record.id = db.length + 1;
-  db.push(record);
-  res.json(record);
-});
+// Route to Delete a Category
 
-app.put('/categories/:id', (req,res,next) => {
-
-});
-
-app.delete('/categories/:id', (req,res,next) => {
-});
+// Route to Update a Category
 
 module.exports = {
   server: app,

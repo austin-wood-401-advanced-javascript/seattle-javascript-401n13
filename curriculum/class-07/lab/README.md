@@ -22,7 +22,7 @@ Once you have a good visual and mental model of how the application works, break
 ---
 
 ## Getting Started
-In the `starter-code`, there are folders that map to each of the lab assignments. You'll be creating 3 new repositories today, one for each part of the assignment.
+In the `starter-code`, there are folders that map to each of the lab assignments. You'll be creating new repositories today, one for each part of the assignment.
 
 ## Requirements
 
@@ -41,19 +41,17 @@ In the `starter-code`, there are folders that map to each of the lab assignments
   * Move just the `/c` and `/d` routes into it
   * Export it
   * Import it into the server file and properly `use()` it
-  
-**Engineering Note** - *Modularity is a tool that not only makes your code more readable and consumable by other developers, it helps you to think about how to break problems down*
 
+**Engineering Note** - *Modularity is a tool that not only makes your code more readable and consumable by other developers, it helps you to think about how to break problems down*
 
 ### API Server
 * Create a repository called `lab-07-api-server` and copy the contents of the `starter-code/api-server` folder into it
-* Complete the server's CRUD functionality
-  * Implement DELETE
-  * Implement PUT
-* Implement data integrity checking
-  * Create a constructor that all input for new and updated records (POST and PUT) can be run through
-  * This constructor should return a properly formatted and validated object (type checked, and required fields)
-  * Only with a good object, should a write operation be allowed to occur
+* Add 404 and 500 error handling middleware to the server
+* Complete the server's full CRUD functionality, using the in-memory database.
+  * `app.get()`
+  * `app.post()`
+  * `app.put()`
+  * `app.delete()`
 * JSDoc for all methods, routes
 * Provide full swagger documentation
   * Wire up to a custom port using the `express-swagger-generator` npm module

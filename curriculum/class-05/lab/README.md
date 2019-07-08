@@ -1,80 +1,71 @@
-# Block 1 Project: Bitmap Transformer
-
-For this assignment you will be building a bitmap (`.bmp`) transformer CLI. It will read a bitmap in from disk, run one or more color or raster transforms and then write it out to a new file.
+# LAB: Buffers - Data Modeling With NoSQL Databases
 
 ## Before you begin
 * Create a new git repository for this lab
 * Copy the starter-code contents into it
 * You'll need to initialize this lab folder as a new node module, install your dependencies, setup your npm script commands, and pull in your config files
 
-## Resources
-* [Bitmap Specification](https://en.wikipedia.org/wiki/BMP_file_format)
-* [Buffer Docs](https://nodejs.org/api/buffer.html)
-
 ## Getting Started
+Refer to *Getting Started* in the [lab submission instructions](../../../reference/submission-instructions/labs/README.md) for complete setup instructions
 
-In the root folder, there is an `index.js` file that should serve as your starting point.
+* install uuid, supertest, mongodb-memory-server
+* start mongo server: `mongod --dbpath=/Users/path/to/data/db`
 
-* The index.js file reads the file and creates a bitmap instance that can `parse()` and `transform()`
-* The parsing has been left to you
-* A sample (yet non-functional) transformation has been provided.
-* No tests have been written, you'll need to implement those
+## Assignment 1: Self Contained Models
 
-In the `assets` folder, you'll find a file called `baldy.bmp` that is your source file for all transformations
+* Work in the `data-modeling/models-singular` folder in the starter code
+* You will find the scaffolding for a category model
+  * `categories-schema.js` - the intended mongoose schema
+    * This needs 2 fields: `name` (required) and `description`, both strings
+  * `categories.js` - the interface for mongoose
+  * In the `tests/models-singular` folder, you'll find the test for this model.
+  * The test is blocked out (but has no actual test code)
+  * Both files are missing some critical bits
+  * Fill in the blanks to get them working.
+    * You must implement the following model interface methods
+      * `get()`
+      * `create()`
+      * `update()`
+      * `delete()`
+  * Use TDD to get the tests and your model working in sync.
+  * Once your tests are passing, validate by writing an app that wires it up for real.
 
-## Requirements
-### Part 1
-* The entry point to your CLI should be index.js
-* Your application should accept at least 2 parameters:
-  * The file to transform
-  * The transformation to run
-  * If you want/need more options from the user, accept those as well
-* The CLI should log useful Error messages if used incorrectly
-* The CLI should log a success message on completion
-* Your application must perform a minimum of 2 unique transformations
-  * One of these can be a core color/hue change
-  * One of these should be something more challenging
-  * See the suggestions below
-* This project will require the use of node buffers in order to manipulate binary data.
-* Your solution should be composed of small tested modules that solve specific problems.
-  * Modularize your code based on functionality
-    * File Reader
-    * File Writer
-    * Transformers
+#### Repeat this process for a new model called `products`
+* Use your imagination for the schema definition (fields)
 
-***Software Engineering Note!***
-*Documentation is your frienemy*
+
+## Assignment 2: Unified/Combined Models
+As you may have noticed, your 2 model interfaces in the previous assignment are 99% the same (not very DRY).  In this assignment, we're going to create a common "mongo" interface, not unlike what we did for the memory and file models.
+
+The goal is to create a single interface, that any mongo based model can simply extend from and get all of the same functionality, with the only difference being their schema definition.
+
+* Work in the `data-modeling/models-modular` folder in the starter code
+* You'll see the categories model and the mongo interface are scaffolded out for you.
+* Move the functionality from one of the models that you created in **Assignment 1** into the mongo interface.
+  * Genericize it
+  * How will you obtain the schema generically?
+* Alter the model itself (`categories.js`) to extend from the mongo interface and export itself, with the right schema wired in.
+* Write tests to assert that you're wired up.
+* Create a new folder called `products` and repeat the above process.
+  * This should be a simple as wiring, as the functionality is now all in the `mongo.js` interface!
+
+#### What have we accomplished?
+* How does impact testing?
+* Can you see how this might scale?
+* How do these interfaces relate to the file and memory interfaces?
+* Can they exist in the same system?
+
 
 ### Testing
-* tests should mock the filesystem
-* have plenty of modular units to test independantly
-* write functional/integration tests to assert that it all works together.
+* Required for all interface methods
 
-### Strategy / Notes / Hints
-You will want to define a strategy for solving the problem before you begin to code. Once you have a strategy defined, you can break it into steps that can be split into helper modules. Each helper module should solve a small specific problem. The main module should utilize the helper modules to execute your original stratagy.
 
-1. Gather user input (infile and transform)
-1. Read the input bitmap file using the fs module
-1. Parse the bitmap's buffer into object represeting a bitmap (using a constructor)
-1. Using metadata from the parsed bitmap object run a transform on the buffer directly (mutate the color or raster data)
-1. Write the mutated buffer to the output file path
+### Stretch Goals
+* Add some pre and post hooks
+  * Logging
+  * Uppercasing and Lowercasing
+* Research Virtual Joins
+  * Can you connect the Categories and Products to get a combined result on a find?
 
-#### Transfrom Ideas
-* Color Pallet Transforms
-  * Invert
-  * Randomize
-  * Black and White
-  * Darken or Lighten
-  * Add or Mutiply a Hue
-  * Add or Subtract Contrast
-
-* Raster Data Transforms
-  * Pixilate
-  * Add a border
-  * Add a watermark
-  * Vertically or Horizontaly Filp
-  * Verticaly or Horizontaly Mirror
-  * Verticaly or Horizontaly Stretch
-
-## Assignment Submission Instructions
+### Assignment Submission Instructions
 Refer to the the [lab submission instructions](../../../reference/submission-instructions/labs/README.md) for the complete lab submission process and expectations

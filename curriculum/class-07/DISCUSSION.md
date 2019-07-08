@@ -9,9 +9,8 @@ Wiki Entry Ideas:
 * Dictionary / Flash Cards
 * Notes in outline form
 
-
 ## Read
-* [express routing](https://scotch.io/tutorials/learn-to-use-the-new-router-in-expressjs-4)
+* [using express middleware](https://expressjs.com/en/guide/using-middleware.html)
 * [express middleware](https://www.tutorialspoint.com/expressjs/expressjs_middleware.htm)
 
 ## Watch
@@ -19,7 +18,7 @@ Wiki Entry Ideas:
 
 ## Skim
 * [using express routing](https://expressjs.com/en/guide/routing.html);
-* [using express middleware](https://expressjs.com/en/guide/using-middleware.html)
+* [supertest](https://github.com/visionmedia/supertest)
 
 ## Bookmark
 * [express middleware list](https://expressjs.com/en/resources/middleware.html)

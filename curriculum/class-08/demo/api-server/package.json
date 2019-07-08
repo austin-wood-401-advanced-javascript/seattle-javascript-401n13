@@ -13,17 +13,17 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "ejs": "^2.6.1",
-    "eslint": "^5.7.0",
-    "express": "^4.16.4",
-    "jest": "^23.6.0",
+    "ejs": "^2.6.2",
+    "eslint": "^6.0.1",
+    "express": "^4.17.1",
+    "jest": "^24.8.0",
     "method-override": "^3.0.0",
     "mongo": "^0.1.0",
-    "mongodb-memory-server": "^5.1.4",
-    "mongoose": "^5.4.3",
+    "mongodb-memory-server": "^5.1.5",
+    "mongoose": "^5.6.1",
     "morgan": "^1.9.1",
-    "superagent": "^4.0.0-beta.5",
-    "supertest": "^3.3.0",
+    "superagent": "^5.1.0",
+    "supertest": "^4.0.2",
     "uuid": "^3.3.2"
   }
 }

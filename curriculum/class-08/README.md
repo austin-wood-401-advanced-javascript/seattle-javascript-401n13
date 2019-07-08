@@ -1,9 +1,9 @@
-# Data Modeling
+# Express Routing & Connected API
 
 ## Learning Objectives
 
-* Build an API server with error handling, logging, and dynamic modeling
-* Build an in-memory data store with file persistence.
+* Understand and implement external (modular) routing with express
+* Integrate a data model into an express API
 
 ## Outline
 * :05 **Housekeeping/Recap**
@@ -17,8 +17,14 @@
 
 ## Computer Science Concept:
 * APIs
-
-## UI Concept:
-* Form Field Design
+* Data Transfer
 
 ## Main Topic:
+
+Routes can be managed in separate modules from the main server, allowing us to extract that logic and wiring to be more topical.
+
+How does this change the server's role?  
+
+* index.js - Entry Point
+* server.js - Hub, Exported Server
+* routes/routex.js, etc - Routers and Handlers

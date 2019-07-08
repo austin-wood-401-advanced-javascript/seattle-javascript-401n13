@@ -10,6 +10,7 @@ const errorHandler = require( './middleware/error.js');
 const notFound = require( './middleware/404.js' );
 
 // Models
+// TODO: Pull these in (or create them)!
 const Products = require('./models/products.js');
 const products = new Products();
 
@@ -27,17 +28,17 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 // Routes
-app.get('/categories', getCategories);
-app.post('/categories', postCategories);
-app.get('/categories/:id', getCategory);
-app.put('/categories/:id', putCategories);
-app.delete('/categories/:id', deleteCategories);
+app.get('/api/v1/categories', getCategories);
+app.post('/api/v1/categories', postCategories);
+app.get('/api/v1/categories/:id', getCategory);
+app.put('/api/v1/categories/:id', putCategories);
+app.delete('/api/v1/categories/:id', deleteCategories);
 
-app.get('/products', getProducts);
-app.post('/products', postProducts);
-app.get('/products/:id', getProduct);
-app.put('/products/:id', putProducts);
-app.delete('/products/:id', deleteProducts);
+app.get('/api/v1/products', getProducts);
+app.post('/api/v1/products', postProducts);
+app.get('/api/v1/products/:id', getProduct);
+app.put('/api/v1/products/:id', putProducts);
+app.delete('/api/v1/products/:id', deleteProducts);
 
 // Catchalls
 app.use(notFound);

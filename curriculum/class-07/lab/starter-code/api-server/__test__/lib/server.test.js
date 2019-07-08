@@ -1,8 +1,8 @@
 'use strict';
 
-const {server} = require('../../lib/server.js');
-const supertest = require('supertest');
-const mockRequest = supertest(server);
+const { server } = require('../../lib/server.js');
+const supergoose = require('../supergoose.js');
+const mockRequest = supergoose(server);
 
 describe('web server', () => {
 
@@ -15,7 +15,7 @@ describe('web server', () => {
       }).catch(console.error);
 
   });
-  
+
   it('should respond with a 404 on an invalid route', () => {
 
     return mockRequest

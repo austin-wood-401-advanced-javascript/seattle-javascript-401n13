@@ -1,4 +1,4 @@
-# LAB: Classes, Inheritance, Functional Programming
+# LAB: API Server
 
 ## Before you begin
 Refer to *Getting Started*  in the [lab submission instructions](../../../reference/submission-instructions/labs/README.md) for complete setup, configuration, deployment, and submission instructions.
@@ -42,24 +42,27 @@ Your diagram should include proper module and functional definitions, connection
 ### Technical Writing
 * Create a folder called `/docs` at the root of the project
 * Create sub-folder under `/docs` called `/config` where you will store your swagger and jsdoc configuration files
+* Refer to *Documentation* in the [lab submission instructions](../../../reference/submission-instructions/labs/README.md) to generate jsdocs for this lab.
 
 #### JSDoc
 This server works great, but isn't very developer friendly at this point. 
-Refer to *Documentation* in the [lab submission instructions](../../../reference/submission-instructions/labs/README.md) to generate jsdocs for this lab.
+
+* Write documentation for all middleware, models, and modules
+* Do not write 'jsdoc' for the routes ...
 
 #### Swagger
 Now that the server has been upgraded to support dynamic models in the routes using the `/:model` url parameter, we need to revisit our swagger documentation to reflect this.
-
-* Add swagger.json to `docs/config` folder
-* Create a get route in the `/api/v1.js` file called `/api/v1/doc` that will use the swagger-ui-express node module to render swagger documentation using a swagger.json file that you created and stored in the `/docs/config` folder
-* This should pull up the swagger live docs and allow you to fully run and test your API
+* The API server includes the [express swagger generator](https://github.com/pgroot/express-swagger-generator) module in the `api` folder to live serve swagger documentation
+* Follow the instructions for that library to document your API routes directly in the `api/v1.js` file
+* This should auto-generate live swagger live and allow you to fully run and test your API directly in the browser
 
 ### Deployment
 Get this server deployed to production. Although you aren't writing code against it, your documentation must be accessible through the links in your readme.  
 
 ### Testing
-* Complete all of the data model and server tests
+* Write a complete set of data model and server tests
 * Use `supergoose`
+* Refer to your previous assigments for examples and inspiration
 
 ## Assignment Submission Instructions
 Refer to the the [lab submission instructions](../../../reference/submission-instructions/labs/README.md) for the complete lab submission process and expectations

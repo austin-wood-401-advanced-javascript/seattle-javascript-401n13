@@ -1,47 +1,27 @@
-# Demos: Block 1 - DS&A, Designs, Comp Sci, Recap
+# Demos: Data Modeling With NoSQL Databases
 
-### Bitmaps  (`demo/bitmap-demo.js`)
-Use this demo as the students final prep for the end of block project - Bitmap Transformer
+### Mongo Models  (`demo/models.js`)
+* Begin by building out the schema (`players-schema.js`), highlighting the rules, types, etc as you go.
+* Do not yet build in the hooks
+* We'll build out an interface with TDD
+* Spend a lot of time wiring up the tests and explaining the process (it's only their 3rd day seeing any tests at all), mocking, etc.
+* What is supergoose?
+  * It's a mock version of mongo, so that tests don't litter up our database.  For all intents and purposes, it **is** mongo.
+  * Code review it, and then let them have it as part of their personal library for all projects
+* Using TDD ...
+  * Build out the Model, which is a class that contains methods wrapping the common "CRUD" verbs
+  * In each of these, you'll call the appropriate mongoose ORM method to do the action
+    * Yes, you are ORM'ing an ORM ...
+    * Rather, we're creating an "Interface" to it.
+  * For the demo, just do `create()` and `get()`
 
-  * Open the bitmap spec document first and talk through it
-  * Write code to read in the bitmap as a buffer
-  * Using the spec as your guide and the `readUInt16LE` functions, parse a few things out of the buffer, such as File Type, Height, Width
-  * Reiterate to the students the need break down the file with a constructor before they can begin to transform it.
-  * Provide some (limited) guidance on how to transform
-    * Change the color table (shading, hues, etc)
-    * Change the pixel array to point to different colors on a pixel by pixel basis
-      * Can you find the edges?
-      
-### Big O
+Once you finish the tests, call out the fact that while we're reasonably sure that it works, do we really know? What we've done so far is to do unit testing with a mock. We need to wire this up and really see it ...
 
-[Common Curriculum Big-O Demo](https://github.com/codefellows/common_curriculum/tree/master/data_structures_and_algorithms/Code_401/class-05/demos/big-o/demo)
-
-The big-o demo is setup with code that is increasingly complex so that you can point to executable lines and count the number of times they will run.
-
-Use this to determine the 'n' factor in loops and recursion, and continually point out and query the students for how many times things will run.
-
-### Linked Lists
-
-[Common Curriculum Linked Lists Demo](https://github.com/codefellows/common_curriculum/tree/master/data_structures_and_algorithms/Code_401/class-05/demos/linked-lists/javascript)
-
-Don't go much deeper than the core implementation of a list constructor.
-
-* Head
-* Tail
-* While Loop to go through and add a node to the end - O(n)
-* Simple head replacement to put a new node at the start - O(1)
-
-### SASS
-[Sassmeister](http://www.sassmeister.com)
-
-Use the Sassmeister online tool (which was built by a former Code Fellows student) to do your initial demo into SASS, hitting on the following basic points:
-
-* Nested Selectors
-* Use of the `&` to stick rules
-* Variables
-* Mixins
-* Loading of Partials
-
-The demo code included in this repo, when typed in, will showcase in real time how SASS compiles down to CSS.
-
-Do the mixins last, once the students grok the idea of nesting and variables.
+* Build out the index.js file which connects to the real mongo and then uses that class to create records.
+* Talk through the connection string/url
+  * This could/should be in .env
+* As you do things, check your database client to show the actual records.
+  * Yeah!  Your tests prove that the real thing works...
+  * Note that the demo has an ID in it that won't work, pull your own from your DB after you've created some records.
+* Once you have cemented the basics of create and read, introduce `pre` and `post` hooks to demonstrate how you can log things, change the data before you save it, or alter it for view after you've retrieved it.
+  * This will open a lot of questions from the group.

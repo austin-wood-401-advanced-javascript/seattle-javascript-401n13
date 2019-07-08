@@ -1,20 +1,36 @@
 'use strict';
 
-const schema = require('./people-schema.js');
-
 class People {
 
   constructor() {
+    this.data = {};
+    /*
+      {
+        1: {name:'john'},
+        2: {name:'lena'},
+        3: {name:'caity'}
+      }
+     */
   }
 
-  get(_id) {
-    let queryObject = _id ? {_id} : {};
-    return schema.find(queryObject);
+  get(id) {
+    return Promise.resolve(
+      id
+        ? this.data[id]
+        : Object.keys(this.data).reduce( (arr,element) => {arr.push(this.data[element]); return arr;}, [])
+    );
+
+    /*
+    [
+      {name:'john'}, {name:'lena'}, {name:'caity'}
+    ]
+    */
   }
-  
+
   post(record) {
-    let newRecord = new schema(record);
-    return newRecord.save();
+    record.id = Object.keys(this.data).length + 1;
+    this.data[record.id] = record;
+    return Promise.resolve(this.data[record.id]);
   }
 
 }

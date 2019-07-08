@@ -6,7 +6,6 @@
 * Understand Express Routing
 * Properly test an `express` server
 * Implement CRUD behavior through HTTP to a REST API
-  * Considerations for Modeling Data
 
 ## Outline
 * :05 **Housekeeping/Recap**

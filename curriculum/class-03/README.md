@@ -11,6 +11,26 @@
 
 ## Outline
 
+### FEEDBACK!
+
+#### Least Helpful
+* Holy Sh*t that was a lot!!!
+* Ambiguity and Open-Endedness
+* Amount of reading (it gets better)
+* Front Row WTF?
+* All the layers of stuff for a submission
+
+#### Most Helpful
+* Team was available
+* Overall Unity
+* Some inconsistencies in canvas and instructionss?
+
+#### Misc
+* Concerns about how ready we are for 401
+* General excitement about all the new stuff
+* More workshops would be helpful 
+  - Might be good on a few saturdays
+
 ### Javascript Runtime
 There are many Javascript runtimes. V8 is the name of the runtime used in the Chrome web browser and in NodeJS. V8 will be used in the following descriptions of how a Javascript runtime works but other browsers and Javascript environments have the same behaviors.
 
